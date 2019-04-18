@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="https://unpkg.com/chota@latest">
 </head>
 <body style="display: flex;flex-direction: column;align-items: center;justify-content: center;background: dimgray; height: 100vh;">
-    <input id="url" placeholder="Url" style="max-width: 100%;width: 400px;margin-bottom: 24px;text-align: center;" />
+    <input id="url" placeholder="Url" style="max-width: 100%;width: 400px;margin-bottom: 24px;text-align: center;" onkeyup="update()" />
     <button class="button success" style="outline: none;" onclick="jump()">Jump</button>
     <script>
         function jump() {
             window.location = document.getElementById('url').value
+        }
+        function update() {
+            const url = `${window.location.pathname}?url=${document.getElementById('url').value}`
+            window.history.pushState({ path: url }, '', url)
         }
         const url = new URLSearchParams(window.location.search).get('url')
         document.getElementById('url').value = url || ''
