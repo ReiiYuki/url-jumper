@@ -1,0 +1,19 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Url Jumper by ReiiYuki</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+</head>
+<body style="display: flex;flex-direction: column;align-items: center;justify-content: center;background: dimgray">
+    <input id="url" placeholder="Url" style="max-width: 100%;width: 400px;margin-bottom: 24px;" />
+    <button class="button success" style="outline: none;" onclick="jump()">Jump</button>
+    <script>
+        function jump() {
+            window.location = document.getElementById('url').value
+        }
+    </script>
+</body>
+</html>
