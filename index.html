@@ -9,7 +9,10 @@
 </head>
 <body style="display: flex;flex-direction: column;align-items: center;justify-content: center;background: dimgray; height: 100vh;">
     <input id="url" placeholder="Url" style="max-width: 100%;width: 400px;margin-bottom: 24px;text-align: center;" onkeyup="update()" />
-    <button class="button success" style="outline: none;" onclick="jump()">Jump</button>
+    <button class="button success" style="outline: none;margin-bottom: 24px;" onclick="jump()">Jump</button>
+    <a class="github-button" href="https://github.com/reiiyuki/url-jumper" data-size="large" data-show-count="true" aria-label="Star reiiyuki/url-jumper on GitHub">Star</a>
+    <p style="margin: 8px 0;color: white;">Powered by</p>
+    <a class="github-button" href="https://github.com/reiiyuki" data-size="large" data-show-count="true" aria-label="Follow @reiiyuki on GitHub">Follow @reiiyuki</a>
     <script>
         function jump() {
             window.location = document.getElementById('url').value
@@ -21,5 +24,6 @@
         const url = new URLSearchParams(window.location.search).get('url')
         document.getElementById('url').value = url || ''
     </script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
