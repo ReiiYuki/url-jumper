@@ -36,15 +36,18 @@
         
         if (md.os() === 'AndroidOS' && androidUrl) {
             jump(androidUrl)
+            return
         }
         
         
         if (md.os() === 'iOS' && iosUrl) {
             jump(iosUrl)
+            return
         }
         
         if (url) {
             jump(url)
+            return
         }
     </script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
