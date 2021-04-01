@@ -13,21 +13,38 @@
     <a class="github-button" href="https://github.com/reiiyuki/url-jumper" data-size="large" data-show-count="true" aria-label="Star reiiyuki/url-jumper on GitHub">Star</a>
     <p style="margin: 8px 0;color: white;">Powered by</p>
     <a class="github-button" href="https://github.com/reiiyuki" data-size="large" data-show-count="true" aria-label="Follow @reiiyuki on GitHub">Follow @reiiyuki</a>
+    <script src="https://unpkg.com/mobile-detect@1.4.5/mobile-detect.js"></script>
     <script>
-        function jump() {
-            window.location = document.getElementById('url').value
+        function jump(url) {
+            window.location = url || document.getElementById('url').value
         }
         function update() {
             const url = `${window.location.pathname}?url=${document.getElementById('url').value}`
             window.history.pushState({ path: url }, '', url)
         }
+        
+        const md = new MobileDetect(window.navigator.userAgent)
         const url = new URLSearchParams(window.location.search).get('url')
+        const androidUrl = new URLSearchParams(window.location.search).get('androidUrl')
+        const iosUrl = new URLSearchParams(window.location.search).get('iosUrl')
         document.getElementById('url').value = url || ''
         
-        if (url) {
-            jump()
+        if (url || androidUrl || iosUrl) {
             document.body.style = 'display: none;'
             document.title = ''
+        }
+        
+        if (md.os() === 'AndroidOS' && androidUrl) {
+            jump(androidUrl)
+        }
+        
+        
+        if (md.os() === 'iOS' && iosUrl) {
+            jump(iosUrl)
+        }
+        
+        if (url) {
+            jump(url)
         }
     </script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
